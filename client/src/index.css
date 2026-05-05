@@ -3,6 +3,11 @@
    Dark theme with glassmorphism, Inter font
    ============================================ */
 
+/* Tailwind CSS directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ----- CSS Custom Properties ----- */
 :root {
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;

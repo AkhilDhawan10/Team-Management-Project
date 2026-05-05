@@ -15,9 +15,10 @@ const generateToken = (id) => {
 const handleValidation = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(400).json({ message: errors.array()[0].msg });
+    res.status(400).json({ message: errors.array()[0].msg });
+    return true;  // Return true to indicate error
   }
-  return null;
+  return false;  // Return false to indicate no error
 };
 
 // POST /api/auth/signup
@@ -36,8 +37,7 @@ router.post(
   ],
   async (req, res) => {
     try {
-      const validationError = handleValidation(req, res);
-      if (validationError) return;
+      if (handleValidation(req, res)) return;
 
       const { name, email, password, role } = req.body;
 
@@ -73,8 +73,7 @@ router.post(
   ],
   async (req, res) => {
     try {
-      const validationError = handleValidation(req, res);
-      if (validationError) return;
+      if (handleValidation(req, res)) return;
 
       const { email, password } = req.body;
       const user = await User.findOne({ email }).select('+password');
