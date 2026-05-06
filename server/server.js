@@ -11,7 +11,9 @@ const taskRoutes = require('./routes/tasks');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 app.use(express.json());
 
 // API Routes
@@ -33,7 +35,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 connectDB().then(() => {
   app.listen(PORT, () => {
