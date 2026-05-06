@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-page">
+    <div className="auth-page" style={{ width: '100vw' }}>
       <div className="auth-container">
         <div className="auth-header">
           <span className="auth-logo">⚡</span>
